@@ -5,13 +5,6 @@ import RestartButton from '@/components/restart-button'
 
 export default function Home() {
   return (
-    // <main className='flex min-h-screen flex-col items-center p-4 sm:p-20'>
-    //   <h1 className='text-3xl sm:text-5xl font-semibold mb-4'>Wordle</h1>
-    //   <RestartButton />
-    //   <Board />
-    //   <GameMessage />
-    //   <Footer />
-    // </main>
     <div className='flex flex-col min-h-screen'>
       <main className='flex-1 flex flex-col items-center justify-center p-4 sm:p-20'>
         <h1 className='text-3xl sm:text-5xl font-semibold mb-4'>Wordle</h1>
