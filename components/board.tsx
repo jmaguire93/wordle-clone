@@ -33,7 +33,7 @@ export default function Board() {
 
       const key = event.key
 
-      if (!(/[a-zA-Z]/.test(key) || (key !== 'Backspace' && key !== 'Enter'))) {
+      if (!/[a-zA-Z]/.test(key)) {
         return
       }
 

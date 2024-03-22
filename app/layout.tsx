@@ -6,7 +6,7 @@ import DataContextProvider from '@/context/data-context-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Wordle',
+  title: 'Wordle Clone',
   description: 'Personal project for code practice'
 }
 
