@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Row from './row'
 import data from '@/data/dictionary.json'
 import { useDataContextProvider } from '@/context/data-context-provider'
+import { motion } from 'framer-motion'
 
 export default function Board() {
   const rows = [1, 2, 3, 4, 5, 6]
@@ -97,12 +98,19 @@ export default function Board() {
   }, [handleKeyPress])
 
   return (
-    <div className='flex items-center justify-center w-full p-4'>
+    <motion.section
+      className='flex items-center justify-center max-w-full py-6 px-4'
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{
+        delay: 0.2
+      }}
+    >
       <div>
         {rows.map((row) => (
           <Row key={row} rowId={row - 1} />
         ))}
       </div>
-    </div>
+    </motion.section>
   )
 }

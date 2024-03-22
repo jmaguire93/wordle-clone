@@ -15,7 +15,7 @@ export default function Row({ rowId }: RowProps) {
   return (
     <div className='flex relative'>
       {currentRow === rowId && (
-        <div className='absolute top-1/2 transform -translate-y-2/3 -left-8'>
+        <div className='absolute top-1/2 transform -translate-y-2/3 -left-6 sm:-left-8'>
           <ChevronRight />
         </div>
       )}

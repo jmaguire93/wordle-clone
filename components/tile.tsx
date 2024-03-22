@@ -39,7 +39,7 @@ export default function Tile({ rowId, tileId }: TileProps) {
 
   return (
     <div
-      className={`flex items-center justify-center h-12 w-12 sm:h-20 sm:w-20 border border-black mb-2 ${color}`}
+      className={`flex items-center justify-center h-12 w-12 sm:h-20 shadow-lg sm:w-20 border border-black mb-2 ${color}`}
     >
       <p className='text-2xl uppercase'>{letter}</p>
     </div>
