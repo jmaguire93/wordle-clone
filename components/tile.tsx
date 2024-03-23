@@ -58,7 +58,7 @@ export default function Tile({ rowId, tileId }: TileProps) {
   useEffect(() => {
     if (currentRow === rowId) {
       setLetter(guess[tileId])
-      setColor('bg-gray-100')
+      setColor('border-4')
     }
 
     if (attempts.includes(rowId)) {
@@ -68,7 +68,7 @@ export default function Tile({ rowId, tileId }: TileProps) {
 
   return (
     <motion.div
-      className={`flex items-center justify-center h-12 w-12 sm:h-20 shadow-lg sm:w-20 border border-black mb-2 ${color}`}
+      className={`flex items-center justify-center h-12 w-12 sm:h-20 shadow-lg sm:w-20 border-2 border-black mb-2 ${color}`}
       variants={tileAnimationVariants}
       animate={
         tileCompleted && currentRow - 1 === rowId

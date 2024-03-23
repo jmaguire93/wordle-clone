@@ -14,7 +14,7 @@ export default function RestartButton() {
       }}
     >
       <button
-        className='px-4 py-2 bg-blue-500 hover:bg-blue-500 text-white rounded-lg shadow-md border hover:scale-[1.05] active:scale-110'
+        className='px-4 py-2 bg-blue-500 border-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-md border hover:scale-[1.05] active:scale-110 transition-all'
         onClick={() => window.location.reload()}
         type='button'
       >
