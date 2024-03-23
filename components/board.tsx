@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo } from 'react'
 import Row from './row'
 import data from '@/data/dictionary.json'
 import { useDataContextProvider } from '@/context/data-context-provider'
@@ -17,9 +17,11 @@ export default function Board() {
     setGuess,
     attempts,
     setAttempts,
-    setMessage
+    setMessage,
+    setDoesNotExist,
+    isCompleted,
+    setIsCompleted
   } = useDataContextProvider()
-  const [playing, setPlaying] = useState<boolean>(true)
 
   const generateSolution = useMemo(() => {
     const wordList = data
@@ -29,7 +31,7 @@ export default function Board() {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      if (!playing) return
+      if (isCompleted) return
       setMessage('')
 
       const key = event.key
@@ -50,12 +52,13 @@ export default function Board() {
 
         if (guess.length < 5) return
         if (!data.includes(guess.toLowerCase())) {
+          setDoesNotExist(true)
           setMessage('Sorry, that word is not in the dictionary!')
           return
         }
 
         if (guess.toLowerCase() === solution.toLowerCase()) {
-          setPlaying(false)
+          setIsCompleted(true)
           setMessage('Congrats, you have won!')
         } else if (attempts.length === 5) {
           setMessage(`Unlucky, the word was ${solution}! Please try again.`)
@@ -69,7 +72,7 @@ export default function Board() {
       if (guess.length >= 5) return
 
       if (key.length === 1) {
-        setGuess(guess.concat(key))
+        setGuess(guess.concat(key.toLowerCase()))
       }
     },
     [
@@ -80,8 +83,10 @@ export default function Board() {
       currentRow,
       setCurrentRow,
       setAttempts,
-      playing,
-      setMessage
+      setMessage,
+      setDoesNotExist,
+      isCompleted,
+      setIsCompleted
     ]
   )
 

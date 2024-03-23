@@ -13,10 +13,9 @@ export default function Footer() {
           delay: 0.3
         }}
       >
-        <small className='mb-2 block text-xs'>&copy; 2024 wordle-clone</small>
         <p className='text-xs'>
-          Built by Josh. Uses React, TypeScript, Tailwind CSS, hosted using
-          Vercel.
+          Built by <span className='underline'>Josh</span>. Uses React,
+          TypeScript, Tailwind CSS, hosted using Vercel.
         </p>
       </motion.section>
     </footer>
