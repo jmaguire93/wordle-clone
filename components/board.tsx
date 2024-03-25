@@ -42,7 +42,7 @@ export default function Board() {
 
   return (
     <motion.section
-      className='flex items-center justify-center max-w-full py-6 px-4'
+      className='flex items-center justify-center max-w-full p-4'
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{

@@ -68,7 +68,7 @@ export default function Tile({ rowId, tileId }: TileProps) {
 
   return (
     <motion.div
-      className={`flex items-center justify-center h-10 w-10 sm:h-16 sm:w-16 shadow-lg  border-2 border-black mb-2 ${color}`}
+      className={`flex items-center justify-center h-9 w-9 sm:h-14 sm:w-14 shadow-lg  border-2 border-black mb-2 ${color}`}
       variants={tileAnimationVariants}
       animate={
         tileCompleted && currentRow - 1 === rowId
