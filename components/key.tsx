@@ -23,7 +23,7 @@ export default function Key({ id }: KeyProps) {
     <div
       onKeyDown={() => onKeyPress(id)}
       onClick={() => onKeyPress(id)}
-      className='text-sm sm:text-base py-4 px-2 border-2 border-black cursor-pointer bg-gray-100'
+      className='text-sm sm:text-base py-4 px-2 border-2 border-black cursor-pointer bg-gray-100 active:bg-gray-200'
     >
       {id}
     </div>
