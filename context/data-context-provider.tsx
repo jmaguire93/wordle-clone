@@ -12,8 +12,6 @@ type DataContextType = {
   setGuess: React.Dispatch<React.SetStateAction<string>>
   attempts: number[]
   setAttempts: React.Dispatch<React.SetStateAction<number[]>>
-  message: string
-  setMessage: React.Dispatch<React.SetStateAction<string>>
   doesNotExist: boolean
   setDoesNotExist: React.Dispatch<React.SetStateAction<boolean>>
   isCompleted: boolean
@@ -33,7 +31,6 @@ export default function DataContextProvider({
   const [currentRow, setCurrentRow] = useState<number>(0)
   const [guess, setGuess] = useState<string>('')
   const [attempts, setAttempts] = useState<number[]>([])
-  const [message, setMessage] = useState<string>('')
   const [doesNotExist, setDoesNotExist] = useState<boolean>(false)
   const [isCompleted, setIsCompleted] = useState<boolean>(false)
 
@@ -48,8 +45,6 @@ export default function DataContextProvider({
         setGuess,
         attempts,
         setAttempts,
-        message,
-        setMessage,
         doesNotExist,
         setDoesNotExist,
         isCompleted,

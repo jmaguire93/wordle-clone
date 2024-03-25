@@ -1,5 +1,8 @@
+'use client'
+
 import { useDataContextProvider } from '@/context/data-context-provider'
 import data from '@/data/dictionary.json'
+import toast from 'react-hot-toast'
 
 export default function useKeyPress() {
   const {
@@ -10,7 +13,6 @@ export default function useKeyPress() {
     setGuess,
     attempts,
     setAttempts,
-    setMessage,
     setDoesNotExist,
     isCompleted,
     setIsCompleted
@@ -18,7 +20,6 @@ export default function useKeyPress() {
 
   const handleKeyPress = (key: string) => {
     if (isCompleted) return
-    setMessage('')
 
     if (!/[a-zA-Z]/.test(key)) {
       return
@@ -30,22 +31,37 @@ export default function useKeyPress() {
 
     if (key === 'Enter') {
       if (attempts.length > 5) {
-        setMessage('There are no more attempts, please try again.')
+        toast('You have no more attempts, please try again.', {
+          icon: '👀'
+        })
         return
       }
 
       if (guess.length < 5) return
       if (!data.includes(guess.toLowerCase())) {
         setDoesNotExist(true)
-        setMessage('Sorry, that word is not in the dictionary!')
+        toast.error('Sorry, that word is not in the dictionary!', {
+          icon: '📖'
+        })
         return
       }
 
       if (guess.toLowerCase() === solution.toLowerCase()) {
         setIsCompleted(true)
-        setMessage('Congrats, you have won!')
+        toast('Congrats, you have won!', {
+          icon: '👏'
+        })
       } else if (attempts.length === 5) {
-        setMessage(`Unlucky, the word was ${solution}! Please try again.`)
+        toast(
+          () => (
+            <span>
+              Unlucky, the word was <b>{solution}</b>! Please try again
+            </span>
+          ),
+          {
+            icon: '😏'
+          }
+        )
       }
 
       setAttempts([...attempts, currentRow])

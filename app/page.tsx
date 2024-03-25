@@ -1,6 +1,5 @@
 import Footer from '@/components/footer'
 import Board from '@/components/board'
-import GameMessage from '@/components/game-message'
 import RestartButton from '@/components/restart-button'
 import Header from '@/components/header'
 import Keyboard from '@/components/keyboard'
@@ -13,7 +12,6 @@ export default function Home() {
         <RestartButton />
         <Board />
         <Keyboard />
-        <GameMessage />
       </main>
       <Footer />
     </div>
