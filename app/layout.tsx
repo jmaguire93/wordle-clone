@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import DataContextProvider from '@/context/data-context-provider'
 import { Toaster } from 'react-hot-toast'
+import Celebration from '@/components/celebration'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,8 +21,14 @@ export default function RootLayout({
     <html lang='en'>
       <DataContextProvider>
         <body className={inter.className}>
+          <Celebration />
           {children}
-          <Toaster />
+          <Toaster
+            containerClassName='text-sm sm:text-base'
+            toastOptions={{
+              duration: 3000
+            }}
+          />
         </body>
       </DataContextProvider>
     </html>
