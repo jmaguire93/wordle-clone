@@ -14,8 +14,8 @@ export default function Footer() {
         }}
       >
         <p className='text-xs'>
-          Built by <span className='underline'>Josh</span>. Uses React,
-          TypeScript, Tailwind CSS, hosted using Vercel.
+          Wordle Clone. Built by <span className='underline'>Josh</span>. Uses
+          React, TypeScript, Tailwind CSS, hosted using Vercel.
         </p>
       </motion.section>
     </footer>

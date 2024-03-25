@@ -6,5 +6,9 @@ import React from 'react'
 export default function GameMessage() {
   const { message } = useDataContextProvider()
 
-  return <div className='text-center'>{message}</div>
+  return (
+    <div>
+      <p className='text-center text-sm font-bold sm:text-base'>{message}</p>
+    </div>
+  )
 }

@@ -68,7 +68,7 @@ export default function Tile({ rowId, tileId }: TileProps) {
 
   return (
     <motion.div
-      className={`flex items-center justify-center h-12 w-12 sm:h-20 shadow-lg sm:w-20 border-2 border-black mb-2 ${color}`}
+      className={`flex items-center justify-center h-10 w-10 sm:h-16 sm:w-16 shadow-lg  border-2 border-black mb-2 ${color}`}
       variants={tileAnimationVariants}
       animate={
         tileCompleted && currentRow - 1 === rowId
@@ -82,7 +82,7 @@ export default function Tile({ rowId, tileId }: TileProps) {
         setDoesNotExist(false)
       }}
     >
-      <p className='text-2xl uppercase'>{letter}</p>
+      <p className='text-xl sm:text-2xl uppercase'>{letter}</p>
     </motion.div>
   )
 }

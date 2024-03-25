@@ -5,23 +5,13 @@ import Row from './row'
 import data from '@/data/dictionary.json'
 import { useDataContextProvider } from '@/context/data-context-provider'
 import { motion } from 'framer-motion'
+import useKeyPress from '@/hooks/useKeyPress'
 
 export default function Board() {
   const rows = [1, 2, 3, 4, 5, 6]
-  const {
-    solution,
-    setSolution,
-    currentRow,
-    setCurrentRow,
-    guess,
-    setGuess,
-    attempts,
-    setAttempts,
-    setMessage,
-    setDoesNotExist,
-    isCompleted,
-    setIsCompleted
-  } = useDataContextProvider()
+  const { setSolution } = useDataContextProvider()
+
+  const { handleKeyPress } = useKeyPress()
 
   const generateSolution = useMemo(() => {
     const wordList = data
@@ -29,65 +19,13 @@ export default function Board() {
     return wordList[randomIndex]
   }, [])
 
-  const handleKeyPress = useCallback(
+  const onKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      if (isCompleted) return
-      setMessage('')
-
       const key = event.key
 
-      if (!/[a-zA-Z]/.test(key)) {
-        return
-      }
-
-      if (key === 'Backspace') {
-        setGuess(guess.slice(0, -1))
-      }
-
-      if (key === 'Enter') {
-        if (attempts.length > 5) {
-          setMessage('There are no more attempts, please try again.')
-          return
-        }
-
-        if (guess.length < 5) return
-        if (!data.includes(guess.toLowerCase())) {
-          setDoesNotExist(true)
-          setMessage('Sorry, that word is not in the dictionary!')
-          return
-        }
-
-        if (guess.toLowerCase() === solution.toLowerCase()) {
-          setIsCompleted(true)
-          setMessage('Congrats, you have won!')
-        } else if (attempts.length === 5) {
-          setMessage(`Unlucky, the word was ${solution}! Please try again.`)
-        }
-
-        setAttempts([...attempts, currentRow])
-        setCurrentRow(currentRow + 1)
-        setGuess('')
-      }
-
-      if (guess.length >= 5) return
-
-      if (key.length === 1) {
-        setGuess(guess.concat(key.toLowerCase()))
-      }
+      handleKeyPress(key)
     },
-    [
-      solution,
-      setGuess,
-      guess,
-      attempts,
-      currentRow,
-      setCurrentRow,
-      setAttempts,
-      setMessage,
-      setDoesNotExist,
-      isCompleted,
-      setIsCompleted
-    ]
+    [handleKeyPress]
   )
 
   useEffect(() => {
@@ -95,12 +33,12 @@ export default function Board() {
   }, [setSolution, generateSolution])
 
   useEffect(() => {
-    document.addEventListener('keydown', handleKeyPress)
+    document.addEventListener('keydown', onKeyPress)
 
     return () => {
-      document.removeEventListener('keydown', handleKeyPress)
+      document.removeEventListener('keydown', onKeyPress)
     }
-  }, [handleKeyPress])
+  }, [onKeyPress])
 
   return (
     <motion.section

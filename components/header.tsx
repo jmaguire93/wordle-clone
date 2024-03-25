@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function Header() {
   return (
-    <header className='text-center pt-8 sm:pt-16'>
+    <header className='text-center pt-8 sm:pt-12'>
       <motion.section
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
