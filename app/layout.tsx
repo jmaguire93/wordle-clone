@@ -24,7 +24,7 @@ export default function RootLayout({
           <Celebration />
           {children}
           <Toaster
-            containerClassName='text-sm sm:text-base'
+            containerClassName='text-sm'
             toastOptions={{
               duration: 3000
             }}
